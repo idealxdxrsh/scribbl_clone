@@ -123,6 +123,6 @@ function startTimer(seconds) {
   }, 1000);
 }
 
-server.listen(3000, () => {
+server.listen(process.env.PORT || 4000;, () => {
   console.log('Server is running on port 3000');
 });
