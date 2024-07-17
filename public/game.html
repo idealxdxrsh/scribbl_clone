@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drawing Game</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    #drawing-board {
+      border: 2px solid #343a40;
+      width: 100%;
+      height: 500px;
+      cursor: crosshair;
+      background: white;
+    }
+    #chat-box {
+      height: 300px;
+      overflow-y: scroll;
+      border: 2px solid #343a40;
+      padding: 10px;
+      background: white;
+    }
+    .chat-message {
+      margin-bottom: 10px;
+    }
+    .correct-guess {
+      color: blue;
+    }
+  </style>
+</head>
+<body class="bg-light">
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h1 class="display-4">Drawing Game</h1>
+        <p id="turn-info" class="font-weight-bold text-info">Waiting for players...</p>
+        <p id="timer" class="font-weight-bold text-danger">Time left: 90s</p>
+        <p id="current-word" class="font-weight-bold"></p>
+      </div>
+      <div class="col-8">
+        <canvas id="drawing-board" class="shadow"></canvas>
+        <div class="form-group mt-3">
+          <label for="pen-color" class="font-weight-bold">Pen Color:</label>
+          <input type="color" id="pen-color" class="form-control">
+        </div>
+        <div class="form-group mt-3">
+          <label for="pen-thickness" class="font-weight-bold">Pen Thickness:</label>
+          <input type="range" id="pen-thickness" min="1" max="10" class="form-control">
+        </div>
+        <button id="clear-canvas" class="btn btn-danger btn-lg mt-3">Clear Canvas</button>
+      </div>
+      <div class="col-4">
+        <div id="score-board" class="mb-3 vstack gap-3">
+          <h3 class="font-weight-bold p-3">Score Board</h3>
+        </div>
+        <div id="chat-box" class="shadow"></div>
+        <div class="input-group mt-3">
+          <input type="text" id="chat-input" class="form-control" placeholder="Type your guess...">
+          <div class="input-group-append">
+            <button id="send-chat" class="btn btn-primary">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
